@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mi Página con Bootstrap</title>
+    <!-- Bootstrap CSS (CDN) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #000; /* Fondo negro */
+            color: white; /* Color del texto blanco para mayor contraste */
+            scroll-behavior: smooth; /* Smooth scroll para el botón de inicio */
+        }
+
+        .navbar-custom {
+            background: linear-gradient(90deg, #007bff, #87CEEB);
+        }
+
+        .navbar-custom .navbar-brand, .navbar-custom .nav-link {
+            color: white;
+        }
+
+        .navbar-custom .nav-link:hover {
+            color: #e0f7fa;
+        }
+
+        h1 {
+            color: #007bff;
+        }
+
+        .card {
+            margin-bottom: 20px;
+        }
+
+        .card-img-top {
+            height: 400px;
+            object-fit: cover;
+        }
+
+        /* Limitar el número de renglones para descripción corta */
+        .short-description {
+            overflow: hidden;
+            height: 80px; /* Ajusta la altura de la descripción visible */
+            display: -webkit-box;
+            -webkit-line-clamp: 4; /* Muestra solo 4 líneas */
+            -webkit-box-orient: vertical;
+        }
+
+        .full-description {
+            display: none; /* Se oculta la descripción completa inicialmente */
+        }
+
+        .scroll-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: none;
+        }
+
+        .no-results {
+            color: #FF6347; /* Color rojo para los mensajes de no resultados */
+        }
+
+        /* Ajustes para el carrusel */
+        .carousel {
+            width: 68%; /* Ajustamos el tamaño del carrusel */
+            margin: 0 auto; /* Centrado horizontal */
+        }
+
+        .carousel-inner img {
+            object-fit: cover;
+            height: 400px; /* Altura del carrusel ajustada */
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Barra de navegación (Hecho con Bootstrap) -->
+    <nav class="navbar navbar-expand-lg navbar-custom">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Mi Sitio Web</a> <!-- Navbar brand -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span> <!-- Botón para pantallas pequeñas -->
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav"> <!-- Lista de navegación -->
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#top">Inicio</a> <!-- Enlace de navegación -->
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#top3">Lista de juegos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#otros-juegos">Aclaraciones</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#otros-juegos">Una aclaracion mas para que este bien claro</a>
+                    </li>
+                </ul>
+                <!-- Barra de búsqueda (Hecho con Bootstrap) -->
+                <form class="d-flex ms-auto" id="search-form">
+                    <input class="form-control me-2" type="search" placeholder="Buscar juegos..." aria-label="Buscar" id="search-input"> <!-- Campo de búsqueda -->
+                    <button class="btn btn-outline-light" type="submit">Buscar</button> <!-- Botón de búsqueda -->
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Carrusel centrado (Hecho con Bootstrap) -->
+    <div class="d-flex justify-content-center mt-4">
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel"> <!-- Carrusel de imágenes -->
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="img2/por1.jpeg" class="d-block w-100" alt="Black Myth WuKong">
+                </div>
+                <div class="carousel-item">
+                    <img src="img2/por2.jpg" class="d-block w-100" alt="Final Fantasy 7 Rebirth">
+                </div>
+                <div class="carousel-item">
+                    <img src="img2/por3.jpg" class="d-block w-100" alt="Elden Ring Shadow of the Erdtree">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span> <!-- Control anterior -->
+                <span class="visually-hidden">Anterior</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span> <!-- Control siguiente -->
+                <span class="visually-hidden">Siguiente</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Contenido principal -->
+    <div class="container mt-5" id="top">
+        <div class="row">
+            <div class="col text-center"> <!-- Columna centrada -->
+                <h1>Bienvenido a Mi Página </h1>
+                <p class="lead">En esta página verás mis juegos favoritos.</p>
+                <a href="#top3" class="btn btn-primary">Empezar</a> <!-- Botón de inicio -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Cards (Hecho con Bootstrap) -->
+    <div class="container mt-5" id="top3">
+        <div class="row" id="game-list">
+            <!-- Los juegos se llenarán dinámicamente -->
+        </div>
+
+        <!-- Paginación (Hecho con Bootstrap) -->
+        <nav aria-label="Page navigation">
+            <ul class="pagination justify-content-center" id="pagination"> <!-- Paginación -->
+                <!-- Los botones de paginación se agregarán dinámicamente -->
+            </ul>
+        </nav>
+        <p class="no-results" id="no-results" style="display: none;">No se encontraron juegos que coincidan con la búsqueda.</p>
+    </div>
+
+    <!-- Otros Juegos -->
+    <div class="container mt-5" id="otros-juegos">
+        <div class="row">
+            <div class="col-md-6"> <!-- Columna de media anchura para cada juego -->
+                <div class="card"> <!-- Tarjeta de Bootstrap -->
+                    <img src="https://i.pinimg.com/236x/05/49/86/05498664d54894f92c6523c50c1eb9e6.jpg" class="card-img-top" alt="Hollow Knight Silksong"> <!-- Imagen de la tarjeta -->
+                    <div class="card-body"> <!-- Cuerpo de la tarjeta -->
+                        <h5 class="card-title">Es mi opinion</h5> <!-- Título de la tarjeta -->
+                        <p class="card-text short-description">Recuerda que esta pagina es MI pagina donde veras los juegos que mas me an gustado de este 2024. </p> <!-- Descripción corta -->
+                        <p class="card-text full-description">Recuerda que esta pagina es MI pagina donde veras los juegos que mas me an gustado de este 2024, tu puedes tener una opinion diferente a la mia asi que vive y deja vivir.</p> <!-- Descripción completa (oculta inicialmente) -->
+                        <button class="btn btn-primary ver-mas" onclick="toggleDescription(this)">Ver más</button> <!-- Botón de "Ver más" -->
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <img src="https://images7.memedroid.com/images/UPLOADED213/63f303757e38e.jpeg" class="card-img-top" alt="Starfield">
+                    <div class="card-body">
+                        <h5 class="card-title">Añadidos a futuro</h5>
+                        <p class="card-text short-description">Intentare a futuro agregar una funcion.</p>
+                        <p class="card-text full-description">Intentare a futuro agregar una funcion donde ustedes puedan subir su opinion sobre mi "top" pero ya eso sera mas adelante cuanto me acuerde o tenga ganas de hacerlo.</p>
+                        <button class="btn btn-primary ver-mas" onclick="toggleDescription(this)">Ver más</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scroll-To-Top Button (Hecho con Bootstrap) -->
+    <button class="btn btn-secondary scroll-to-top">
+        ↑ <!-- Botón de volver al principio -->
+    </button>
+
+    <!-- Bootstrap JS y dependencias -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- JavaScript personalizado -->
+    <script>
+        // Mostrar u ocultar descripciones completas al hacer clic en "Ver más"
+        function toggleDescription(button) {
+            const fullDescription = button.parentElement.querySelector('.full-description');
+            const shortDescription = button.parentElement.querySelector('.short-description');
+            if (fullDescription.style.display === 'none') {
+                fullDescription.style.display = 'block';
+                shortDescription.style.display = 'none';
+                button.textContent = 'Ver menos';
+            } else {
+                fullDescription.style.display = 'none';
+                shortDescription.style.display = 'block';
+                button.textContent = 'Ver más';
+            }
+        }
+
+        // Función para mostrar el botón de "Scroll to top" al hacer scroll
+        window.onscroll = function () {
+            const scrollToTopButton = document.querySelector('.scroll-to-top');
+            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+                scrollToTopButton.style.display = 'block';
+            } else {
+                scrollToTopButton.style.display = 'none';
+            }
+        };
+
+        // Hacer que el botón de scroll al principio funcione
+        document.querySelector('.scroll-to-top').addEventListener('click', function () {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+
+    <script>
+        // Datos de los juegos
+        const games = [
+            { title: 'Prince of Persia: The Lost Crown', description: 'Prince of Persia: The Lost Crown es un plataformas de acción 2D a cargo de Ubisoft Montpellier y Ubisoft para PC, Switch, PlayStation 4, Xbox One, PlayStation 5 y Xbox Series. Adéntrate en un atractivo juego de plataformas repleto de acción y aventura. Viaja por la mitología persa y manipula los límites del espacio y el tiempo. Usa tus poderes del tiempo, habilidades de combate y movimientos para ejecutar combos letales y derrotar a criaturas mitológicas y enemigos corrompidos por el tiempo. Compra amuletos a los comerciantes y equípate con ellos para jugar a tu manera.', img: 'https://img.asmedia.epimg.net/resizer/v2/https%3A%2F%2Fstatic.prisa.com%2Fgamepedia%2Fimagenes%2F2023%2F6%2F9%2Fgame_cover%2F939878697.jpg?auth=720732505c347d1252735ac8e43fbe7ccf6aa5ed2fb056e2fb33afadfb3147de&width=280&height=420&smart=true' },
+            { title: 'Like a Dragon: Infinite Wealth', description: 'Like a Dragon: Infinite Wealth es un RPG con combates por turnos a cargo de Ryu Ga Gotoku Studio y Sega para PC, PlayStation 4, Xbox One, PlayStation 5 y Xbox Series que sigue con las aventuras de Ichiban Kasuga. Dos héroes más grandes que la vida misma se unen guiados por el destino, o quizás, por algo más siniestro… Ichiban Kasuga, un perdedor imparable que sabe lo que es tener que recuperarse después de tocar fondo, y Kazuma Kiryu, un hombre roto que debe enfrentar sus últimos días. Disfruta de la vida en Japón y explora todo lo que ofrece Hawái en una aventura tan grande que abarca todo el Pacífico.', img: 'https://img.asmedia.epimg.net/resizer/v2/https%3A%2F%2Fstatic.prisa.com%2Fgamepedia%2Fimagenes%2F2023%2F9%2F20%2Fgame_cover%2F275022384.jpg?auth=9a4a1c5fd03928d49376e7e3046ec439eeb091ef0f2d1eab086379bfa9f29835&width=280&height=420&smart=true' },
+            { title: 'Final Fantasy VII Rebirth', description: 'Final Fantasy VII Rebirth es un videojuego de acción RPG a cargo de Square Enix para PlaySation 5 que continúa con la historia de Final Fantasy VII Remake. La travesía desconocida continúa… Tras escapar de la distópica ciudad de Midgar, Cloud y sus amigos se embarcan en un viaje por todo el planeta. Les aguardan nuevas aventuras en vasto y vibrante mundo. Recorre las praderas cubiertas de hierba a lomo de chocobo y explora los extensos ambientes. Combina el pensamiento estratégico con una emocionante acción de combate junto a tus camaradas, incluyendo personajes nuevos añadidos. Profundiza sus relaciones para desatar poderosos combos de equipo.', img: 'https://img.asmedia.epimg.net/resizer/v2/https%3A%2F%2Fstatic.prisa.com%2Fgamepedia%2Fimagenes%2F2023%2F9%2F15%2Fgame_cover%2F297934058.jpg?auth=e39b2dbe6954e1471487a8f24639a2fa6f56cde555976893ad16ba3b94bf0df8&width=280&height=420&smart=true' },
+            { title: 'The Legend of Heroes: Trails through Daybreak', description: 'The Legend of Heroes: Trails through Daybreak es un RPG a cargo de Nihon Falcom y NIS America para PC, Switch, PlayStation 4 y PlayStation 5. Sumérgete en el capítulo más nuevo de la serie Trails con Kuro no Kiseki y experimenta la aventura con combate mejorado, imágenes actualizadas y un modo de juego de alta velocidad. El spriggan conocido como Van Arkride es un profesional clandestino que acepta trabajos de cualquier cliente y actúa como detective, negociador o cazarrecompensas sin lealtad alguna. Sin embargo, el curso de su vida cambiará para siempre cuando acepta un extraño caso que amenaza a toda la nación', img: 'https://img.asmedia.epimg.net/resizer/v2/https%3A%2F%2Fstatic.prisa.com%2Fgamepedia%2Fimagenes%2F2023%2F9%2F22%2Fgame_cover%2F939370940.jpg?auth=465662f331b4a35f56df70bb5feba9e6f9faeff7463397d46b314fc5e39d258a&width=280&height=420&smart=true' },
+            { title: 'Balatro', description: 'El roguelike de póker. Balatro es un hipnótico y genial constructor de mazos, un videojuego de estrategia a cargo de LocalThunk y Playstack para PC, Switch, PlayStation 4, Xbox One, PlayStation 5, Xbox Series, iOS y Android donde podrás jugar manos ilegales de póker, descubrir comodines que alterarán tus partidas y activar combos impresionantes que dispararán tu adrenalina.', img: 'https://img.asmedia.epimg.net/resizer/v2/https%3A%2F%2Fstatic.prisa.com%2Fgamepedia%2Fimagenes%2F2024%2F4%2F3%2Fgame_cover%2F204603988.jpg?auth=09339f7a5caa2e08c3efc25132767876fffeb3acd359f81c4bf2bc22a77fcfef&width=280&height=420&smart=true' },
+            { title: 'Dragon s Dogma 2', description: 'Dragon s Dogma 2 es un videojuego de acción RPG a cargo de Capcom para PC, PlayStation 5 y Xbox Series ambientado en el fantástico universo de la franquicia. La historia arranca en una prisión subterránea donde el eco de la voz del dragón resuena en la niebla de recuerdos perdidos. Álzate, Arisen, y vénceme siguiendo el dogma de este mundo. Entre los dominios de los humanos y los férides, un héroe deberá cumplir su destino olvidado. ¿Qué dogma ve tu corazón a través de tus ojos? Esta es la historia de quien deberá matar al dragón y subir al trono.', img: 'https://img.asmedia.epimg.net/resizer/v2/https%3A%2F%2Fstatic.prisa.com%2Fgamepedia%2Fimagenes%2F2023%2F6%2F13%2Fgame_cover%2F333496006.jpg?auth=37ae2bb296c86f44dea7c3de6df211491e0c16bc6ee4ff4b6b34a440edeca7eb&width=280&height=420&smart=true' },
+            { title: 'Metaphor: ReFantazio', description: 'Metaphor: ReFantazio es un RPG con combates por turnos a cargo de Studio Zero y Atlus para PC, PlayStation 4, PlayStation 5 y Xbox Series. Escribe tu destino y supera el miedo al adentrarte en un hermoso y oscuro mundo de fantasía jamás visto hasta ahora. Repleto de misterio inquietante, el reino se encuentra al borde del abismo. Ahora, debes luchar por el trono... y por el futuro. De las mentes creativas de Persona 3, Persona 4 y Persona 5, Metaphor: ReFantazio marca el primer RPG de fantasía de Atlus, del director Katsura Hashino, diseñador de personajes Shigenori Soejima y compositor Shoji Meguro.', img: 'https://img.asmedia.epimg.net/resizer/v2/https%3A%2F%2Fstatic.prisa.com%2Fgamepedia%2Fimagenes%2F2024%2F10%2F07%2Fgame_cover%2F321457058.jpg?auth=72365046549c05d269c70bba332fdeee1a78381587e2cae3566f1ef11077fa20&width=280&height=420&smart=true' },
+            { title: 'The Legend of Zelda: Echoes of Wisdom', description: 'The Legend of Zelda: Echoes of Wisdom es una aventura a cargo de Nintendo para Switch. Los habitantes de Hyrule se están desvaneciendo poco a poco a causa de extrañas brechas que han surgido de repente y, entre los desaparecidos, se encuentra cierto conocido espadachín. Ahora está en manos de la princesa Zelda salvar su reino.', img: 'https://img.asmedia.epimg.net/resizer/v2/https%3A%2F%2Fstatic.prisa.com%2Fgamepedia%2Fimagenes%2F2024%2F06%2F21%2Fgame_cover%2F805906916.jpg?auth=3a2fb1a1a2d27d28e51e03c691d3d6d1f536801997ae4bb551d9032f1b96c7f1&width=280&height=420&smart=true' },
+            { title: 'Eiyuden Chronicle: Hundred Heroes', description: 'Eiyuden Chronicle: Hundred Heroes es un RPG a cargo de Rabbit & Bear Studios y 505 Games para PC, PlayStation 4, Xbox One, PlayStation 5, Xbox Series y Switch de los creadores de la saga Suikoden. Un juego diseñado para ofrecer a los jugadores una versión moderna de la clásica experiencia de un JRPG. Prepárate para encarnar a más de 100 personajes jugables en un mundo desgajado por la guerra que solo tú puedes salvar.', img: 'https://img.asmedia.epimg.net/resizer/v2/https%3A%2F%2Fstatic.prisa.com%2Fgamepedia%2Fimagenes%2F2024%2F3%2F21%2Fgame_cover%2F892133500.jpg?auth=31c653d223bdf3d62ae325f0360625ee9c59cf861f5541d86d87eb640a1b52b3&width=280&height=420&smart=true' },
+            { title: 'Age of Mythology: Retold', description: 'Age of Mythology: Retold es un videojuego de estrategia histórica en tiempo real desarrollado por Worlds Edge junto a Forgotten Empires, Tantalus Media, CaptureAge y Virtuos y editado por Xbox Game Studios para PC, Xbox One y Xbox Series. Una remasterización del título clásico con gráficos, sonido y otras características actualizadas.  Protege tus dominios, lidera monstruos legendarios e invoca el poder de los dioses para acabar con tus enemigos.', img: 'https://img.asmedia.epimg.net/resizer/v2/https%3A%2F%2Fstatic.prisa.com%2Fgamepedia%2Fimagenes%2F2024%2F2%2F26%2Fgame_cover%2F563094595.jpg?auth=00105dd9bb07e2bcaf082654e761db0f5135c4f3ad3cf8e776559c27dad14fb7&width=280&height=420&smart=true' },
+            { title: 'Tekken 8', description: 'Con la tecnología de Unreal Engine 5 y disponible de forma exclusiva para PC, PlayStation 5 y Xbox Series a cargo de Bandai Namco Studios y Bandai Namco Entertainment, Tekken 8 lleva al límite el hardware y las tecnologías de última generación. El juego incluye modelos de personajes en alta definición creados desde cero, con pelo y piel de alta fidelidad, además de gráficos inmersivos, como puede observarse en el reflejo de los movimientos de los personajes en el propio movimiento de los músculos.', img: 'https://img.asmedia.epimg.net/resizer/v2/https%3A%2F%2Fstatic.prisa.com%2Fgamepedia%2Fimagenes%2F2023%2F3%2F14%2Fgame_cover%2F219446669.jpg?auth=937754f8409f101e6c343a2704ceaf1340afb190a708809e5e94a43ffbab8403&width=280&height=420&smart=true' },
+            { title: 'Persona 3 Reload', description: 'Ponte en la piel de un estudiante transferido empujado a un destino inesperado al entrar en la hora "oculta" entre un día y el siguiente. Despierta un poder increíble y persigue los misterios de la Hora Oscura, lucha por tus amigos y deja una huella en sus recuerdos para siempre. Persona 3 Reload, un RPG a cargo de Atlus para PC, PlayStation 4, Xbox One, PlayStation 5 y Xbox Series, es una reinvención cautivadora del juego de rol que define el género, renacido para la era moderna.', img: 'https://img.asmedia.epimg.net/resizer/v2/https%3A%2F%2Fstatic.prisa.com%2Fgamepedia%2Fimagenes%2F2023%2F6%2F13%2Fgame_cover%2F511628539.jpg?auth=cfb7e48550d9c1811737711b1684748208084e61a80f14eef11f46f0d8eba13e&width=280&height=420&smart=true' },
+            { title: 'Dead Rising Deluxe Remaster', description: 'Dead Rising Deluxe Remaster es una aventura de acción a cargo de Capcom para PC, PlayStation 5 y Xbox Series. Vuelve Dead Rising con gráficos modernizados. Más que un simple remaster, este Deluxe Remaster supone una completa renovación gráfica del primer juego de Dead Rising, la serie de juegos de acción líder en matanza de zombis', img: 'https://img.asmedia.epimg.net/resizer/v2/https%3A%2F%2Fstatic.prisa.com%2Fgamepedia%2Fimagenes%2F2024%2F07%2F02%2Fgame_cover%2F471942817.jpg?auth=08270898ab95164d10571e7216551027d4e192651ec6120f5dcef8e13181fb2c&width=280&height=420&smart=true' },
+            { title: 'World of Warcraft: The War Within', description: 'World of Warcraft: The War Within es un RPG de acción multijugador a cargo de Blizzard Entertainment para PC. Viaja por inéditos mundos subterráneos, repletos de maravillas ocultas y peligros al acecho, hasta las oscuras profundidades del imperio nerubiano, donde la maliciosa Presagista del Vacío está amasando fuerzas arácnidas para poner Azeroth de rodillas.', img: 'https://img.asmedia.epimg.net/resizer/v2/https%3A%2F%2Fstatic.prisa.com%2Fgamepedia%2Fimagenes%2F2024%2F09%2F18%2Fgame_cover%2F264709874.jpg?auth=92aa884498ca996950529cafa5547fc1e51de729f59837d86ec17591252da060&width=280&height=420&smart=true' },
+            { title: 'Silent Hill 2', description: 'Silent Hill 2 es el remake del clásico de Konami de PS2 en forma de aventura de acción a cargo de Bloober Team y Konami para PC y PlayStation 5. Disfruta de una clase magistral de terror psicológico y supervivencia. Aclamada como la mejor entrega de la serie, descubre en el último hardware escalofriantes imágenes y un sonido visceral. Tras recibir una carta de su mujer fallecida, James se dirige al lugar donde compartieron tantos recuerdos con la esperanza de verla una vez más: Silent Hill.', img: 'https://img.asmedia.epimg.net/resizer/v2/https%3A%2F%2Fstatic.prisa.com%2Fgamepedia%2Fimagenes%2F2022%2F10%2F20%2Fgame_cover%2F229373161666257900.jpg?auth=f3f5cc4f115217d2519eb3dcb285eab8b5cdee67911ed2d24da0a66e225bbeec&width=280&height=420&smart=true' },
+            { title: 'Sonic X Shadow Generations', description: 'Sonic X Shadow Generations es un plataformas a cargo de Sonic Team y Sega para PC, Switch, PlayStation 4, Xbox One, PlayStation 5 y Xbox Series. Ponte en la piel de Shadow the Hedgehog en una nueva campaña de historia con poderes y habilidades nunca vistos. Cuando Black Doom, el viejo enemigo de Shadow, reaparece y amenaza con apoderarse del mundo, Shadow debe viajar a su propio pasado, hacer frente a recuerdos dolorosos y a enemigos conocidos, y sacar a la luz sus nuevos poderes para salvar al mundo y demostrar por qué es la forma de vida definitiva. También incluye la remasterización del Sonic Generations original.', img: 'https://img.asmedia.epimg.net/resizer/v2/https%3A%2F%2Fstatic.prisa.com%2Fgamepedia%2Fimagenes%2F2024%2F06%2F10%2Fgame_cover%2F415605553.jpg?auth=4933a405bbd6cd1e6b2710b1455f5bd3b0d6f32f708faf073a2fadd69b0e893d&width=280&height=420&smart=true' },
+            { title: 'Call of Duty: Black Ops 6', description: 'Call of Duty: Black Ops 6 es un videojuego de acción first person shooter a cargo de Treyarch y Activision para PC, PlayStation 4, Xbox One, PlayStation 5, Xbox Series, un thriller de acción y espionaje ambientado a principios de los 90, un periodo de transición y agitación en el ámbito político mundial caracterizado por el fin de la Guerra Fría y el auge de Estados Unidos como superpotencia.', img: 'https://img.asmedia.epimg.net/resizer/v2/https%3A%2F%2Fstatic.prisa.com%2Fgamepedia%2Fimagenes%2F2024%2F06%2F10%2Fgame_cover%2F80238949.jpg?auth=3014fc2926fb313a9254ecb102d53d4ddb4a09e47e94586eaed5f7b958284b35&width=280&height=420&smart=true' },
+            { title: 'Horizon Zero Dawn Remastered ', description: 'Horizon Zero Dawn Remastered es una aventura de acción a cargo de Guerrilla Games, Nixxes y Sony Interactive Entertainment para PC y PlayStation 5 que incluye más de 10 horas de conversaciones regrabadas, capturas de movimiento y un sinfín de mejoras gráficas que dotarán al juego de la misma calidad visual que Horizon Forbidden West.', img: 'https://img.asmedia.epimg.net/resizer/v2/https%3A%2F%2Fstatic.prisa.com%2Fgamepedia%2Fimagenes%2F2024%2F09%2F26%2Fgame_cover%2F771540884.jpg?auth=abd13dbb85bbd90458f9ef14ca9e12bb78a781be41a57136bf9ef84691c8e02b&width=280&height=420&smart=true' },
+            { title: 'Dragon Quest III HD-2D Remake', description: 'Dragon Quest III HD-2D Remake, un RPG a cargo de Square Enix y Artdink Corporation para PC, Switch, PlayStation 5 y Xbox Series, es la obra maestra atemporal y punto de partida de la llamada trilogía de Erdrick que resurge con un aspecto totalmente renovado. Tiempo ha, el heroico Ortega dejó atrás a su mujer y su retoño a fin de acabar con el archienemigo Baramos. Por desgracia, Ortega falló en su empresa, y a día de hoy la amenaza del maléfico Baramos sigue cerniéndose sobre la humanidad. En su decimosexto cumpleaños, la única descendencia de Ortega recibe el beneplácito del rey de Aliana para retomar el legado de su padre y concluir una misión de suma importancia: derrotar a Baramos y salvar al mundo.', img: 'https://img.asmedia.epimg.net/resizer/v2/https%3A%2F%2Fstatic.prisa.com%2Fgamepedia%2Fimagenes%2F2024%2F06%2F25%2Fgame_cover%2F336931469.jpg?auth=8a4d1195be913ed1dbec113d2587352f7fad9046e5ac42fbb6f221e4770297da&width=280&height=420&smart=true' },
+            { title: 'Batman: Arkham Shadow', description: 'Batman: Arkham Shadow es una aventura de acción a cargo de Camouflaj y Oculus VR para Meta Quest, en exclusiva para el dispositivo de realidad virtual Meta Quest 3. La ciudad de Gotham está en peligro. Y eres el único que puede salvarlo. Prepárate para sumergirte en las oscuras calles de Gotham para vivir una nueva historia ambientada en la franquicia Batman: Arkham.', img: 'https://img.asmedia.epimg.net/resizer/v2/https%3A%2F%2Fstatic.prisa.com%2Fgamepedia%2Fimagenes%2F2024%2F06%2F10%2Fgame_cover%2F623725315.jpg?auth=8774a308ffe5d5c06ae89ed12c4d4324e9815519182923615fc7822afdd12e5e&width=280&height=420&smart=true' },
+            { title: 'Indiana Jones y el Gran Círculo', description: 'Indiana Jones y el Gran Círculo es una aventura de acción a cargo de MachineGames y Bethesda Softworks para PC, Xbox Series y PlayStation 5. Descifra uno de los misterios más insondables de la historia en esta aventura individual en primera persona. Corre el año 1937 y fuerzas abyectas recorren el planeta para hacerse con el poder secreto del Gran Círculo. Solo hay una persona capaz de pararles los pies: Indiana Jones.', img: 'https://img.asmedia.epimg.net/resizer/v2/https%3A%2F%2Fstatic.prisa.com%2Fgamepedia%2Fimagenes%2F2024%2F1%2F19%2Fgame_cover%2F284362146.jpg?auth=27115ea087be23bfeb2f2a992c0bbcdf72c75af2cee00be7dad9f7c7a89a69d0&width=280&height=420&smart=true' },
+            { title: 'Neva', description: 'Neva es un plataformas de acción a cargo de Nomada Studio y Devolver Digital para PC, Switch, PlayStation 4, PlayStation 5 y Xbox Series Switch que narra la historia de Alba, una joven cuyo destino se entrelaza con el de un curioso lobato tras un traumático suceso con ciertas fuerzas oscuras. Los dos juntos se aventuran en un peligroso viaje a través de un mundo en decadencia que poco a poco pierde su belleza.', img: 'https://img.asmedia.epimg.net/resizer/v2/https%3A%2F%2Fstatic.prisa.com%2Fgamepedia%2Fimagenes%2F2023%2F5%2F26%2Fgame_cover%2F252335382.jpg?auth=a9078e378912ec1738fee3c264120c602fe62c7194bdb4197cd5b69b23af1bc0&width=280&height=420&smart=true' },
+            { title: 'Stellar Blade', description: 'Stellar Blade es un videojuego de acción de corte hacknslash a cargo de Shift Up y Sony Interactive Entertainment para PlayStation 5 y PC. Eve y sus camaradas aterrizan en la superficie para reocupar la Tierra extinta y se encuentran con un superviviente llamado Adam. Adam lleva a Eve a Xion, el último reducto de la humanidad. Allí descubre muchas historias y además conoce a Orcal, el ciudadano de más edad. Para cumplir su misión de salvar la Tierra, Eve establece relaciones estrechas con los miembros más importantes de Xion y ayuda a reconstruir la ciudad.', img: 'https://img.asmedia.epimg.net/resizer/v2/https%3A%2F%2Fstatic.prisa.com%2Fgamepedia%2Fimagenes%2F2024%2F3%2F26%2Fgame_cover%2F231755372.jpg?auth=989354029343ef3e25862562008094549a2edadd519de27fac33d55f795b149d&width=280&height=420&smart=true' },
+            { title: 'Star Wars Outlaws', description: 'Star Wars Outlaws es una aventura de acción a cargo de Massive Entertainment y Ubisoft para PC, PlayStation 5 y Xbox Series. Experimenta el primer juego de mundo abierto de Star Wars, ambientado entre los acontecimientos de El Imperio contraataca y El retorno del Jedi, y explora planetas únicos por toda la galaxia, tanto nuevos como clásicos. Arriésgalo todo encarnando a Kay Vess, una buscavidas novata que busca la libertad y la manera de comenzar una nueva vida junto con Nix, su compañero de viaje. Lucha, roba y engaña a los sindicatos del crimen de toda la galaxia y únete a la lista de los más buscados.', img: 'https://img.asmedia.epimg.net/resizer/v2/https%3A%2F%2Fstatic.prisa.com%2Fgamepedia%2Fimagenes%2F2023%2F6%2F13%2Fgame_cover%2F26479898.jpg?auth=6ee65c73ef7cbef86e92d8bcc7d180abce3947cf1b9b4ff779ce2f4067c923b4&width=280&height=420&smart=true' },
+            { title: 'Sam & Max: The Devil’s Playhouse Remastered', description: 'Sam & Max: The Devil’s Playhouse Remastered es una aventura gráfica a cargo de Skunkape Games para PC, Switch, PlayStation 4, Xbox One, PlayStation 5 y Xbox Series. A medida que los villanos intergalácticos que buscan la Caja de Juguetes del Diablo se acercan y las habilidades psíquicas de Max crecen más allá de su control, la Policía Independiente se enfrentará a su adversario más aterrador hasta el momento: el poder de la mente de Max.', img: 'https://img.asmedia.epimg.net/resizer/v2/https%3A%2F%2Fstatic.prisa.com%2Fgamepedia%2Fimagenes%2F2024%2F08%2F19%2Fgame_cover%2F687493604.jpg?auth=efe0b5ce4b2c5b3ec6d7830e7125d7cf06ad75987a6dffe9a46d3573a1767463&width=280&height=420&smart=true' },
+            { title: 'The Plucky Squire', description: 'The Plucky Squire es una aventura de acción a cargo de All Possible Futures y Devolver Digital para PC, Switch, PlayStation 5 y Xbox Series en el que sus protagonistas dan el salto de las páginas de una fábula a un mundo en 3D en el que enfrentarse a toda clase de peligros para salvar a sus amigos.', img: 'https://img.asmedia.epimg.net/resizer/v2/https%3A%2F%2Fstatic.prisa.com%2Fgamepedia%2Fimagenes%2F2022%2F06%2F11%2Fgame_cover%2F701222901654905444.jpg?auth=81e368bbbe3032a01c4e0977ef5eb33c6c592eaed50e5216e1b32e4ddf28d37d&width=280&height=420&smart=true' },
+            { title: 'Mario & Luigi: Conexión fraternal', description: 'Mario & Luigi: Conexión fraternal es un RPG a cargo de Nintendo para Switch. El inimitable dúo de hermanos regresa para una nueva aventura en alta mar. Leva anclas en compañía de Mario y Luigi a bordo de la Isla Nao (mitad barco, mitad isla), y recorre el ancho mundo de Concordia. Usa el cañón de la Isla Nao para visitar, explorar y vivir mil peripecias en todo tipo de islas, que albergan desde selvas tropicales hasta bulliciosas ciudades.', img: 'https://img.asmedia.epimg.net/resizer/v2/https%3A%2F%2Fstatic.prisa.com%2Fgamepedia%2Fimagenes%2F2024%2F06%2F25%2Fgame_cover%2F891345566.jpg?auth=0e61eb873c7a47b3210a5c620042ea22462966d323a7bdd501df0c28b6674d0c&width=280&height=420&smart=true' },
+            { title: 'Paper Mario: La Puerta Milenaria', description: 'Dobla a Mario en forma de avión para ayudarle a surcar los aires, o plánchalo al máximo para poder pasar por las más estrechas rendijas en tu viaje para rescatar a la pobre Princesa Peach. La acción se desarrolla en un vasto mundo donde tendrás que buscar los Cristales Estrellas y te encontrarás con antiguos amigos... y antiguos enemigos. Paper Mario: La Puerta Milenaria es una aventura RPG a cargo de Nintendo para GameCube y Switch.', img: 'https://img.asmedia.epimg.net/resizer/v2/https%3A%2F%2Fstatic.prisa.com%2Fgamepedia%2Fimagenes%2F2024%2F3%2F11%2Fgame_cover%2F912420875.jpg?auth=50c41a8031410990a23334837a5a23c9971f15439f3a3bc3a38c017441706089&width=280&height=420&smart=true' },
+            { title: 'Luigis Mansion 2 HD', description: 'Únete a Luigi, el héroe cobardica, en una fantasmagórica misión en Luigis Mansion 2 HD, una aventura de acción a cargo de Nintendo para Switch. En esta aventura con gráficos mejorados visitarás distintos lugares del tenebroso Valle Sombrío, un lugar repleto de revoltosos fantasmas y donde los sucesos paranormales están a la orden del día. Por suerte, Luigi cuenta con las herramientas perfectas para lidiar con ellos, como la estrobombilla, que aturde a los enemigos, y la Succionaentes, con la que Luigi puede aspirar fantasmas y objetos, e incluso interactuar con el entorno.', img: 'https://img.asmedia.epimg.net/resizer/v2/https%3A%2F%2Fstatic.prisa.com%2Fgamepedia%2Fimagenes%2F2024%2F3%2F11%2Fgame_cover%2F457680815.jpg?auth=d59bd8f44e32a0437ec3959de22423a59019565868e584057da6e8c8396f2041&width=280&height=420&smart=true' },
+            { title: 'Destiny 2: La Forma Final', description: 'Destiny 2: La Forma Final es una expansión del videojuego de acción first person shooter a cargo de Bungie para PC, PlayStation 4, Xbox One, PlayStation 5 y Xbox Series. La Forma Final, una retorcida calcificación de la realidad diseñada por el Testigo, se cierne sobre nosotros. Embárcate en un peligroso viaje al corazón del Viajero, reúne a la Vanguardia y ponle fin a la guerra entre la Luz y la Oscuridad. ', img: 'https://img.asmedia.epimg.net/resizer/v2/https%3A%2F%2Fstatic.prisa.com%2Fgamepedia%2Fimagenes%2F2023%2F8%2F28%2Fgame_cover%2F652697891.jpg?auth=38909100eb65bfd36c69a3af22820404aea7dad095f7ad21d28df694112333a4&width=280&height=420&smart=true' }
+        ];
+
+        let filteredGames = [...games];  // Usamos una variable separada para los juegos filtrados
+        const gamesPerPage = 6;
+        let currentPage = 1;
+
+        // Función para cargar los juegos en la página
+        function loadGames(page) {
+            const startIndex = (page - 1) * gamesPerPage;
+            const endIndex = page * gamesPerPage;
+            const pageGames = filteredGames.slice(startIndex, endIndex);
+
+            const gameList = document.getElementById('game-list');
+            gameList.innerHTML = '';
+
+            pageGames.forEach(game => {
+                const cardHTML = `
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img src="${game.img}" class="card-img-top" alt="${game.title}">
+                            <div class="card-body">
+                                <h5 class="card-title">${game.title}</h5>
+                                <p class="card-text short-description">${game.description}</p>
+                                <p class="card-text full-description">${game.description}</p>
+                                <button class="btn btn-primary ver-mas" onclick="toggleDescription(this)">Ver más</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                gameList.innerHTML += cardHTML;
+            });
+
+            updatePagination();
+        }
+
+        // Función para actualizar la paginación
+        function updatePagination() {
+            const pagination = document.getElementById('pagination');
+            pagination.innerHTML = '';
+
+            const pageCount = Math.ceil(filteredGames.length / gamesPerPage);
+            
+            for (let i = 1; i <= pageCount; i++) {
+                const pageButton = document.createElement('li');
+                pageButton.classList.add('page-item');
+                pageButton.innerHTML = `<a class="page-link" href="#" onclick="loadGames(${i}); return false;">${i}</a>`;
+                pagination.appendChild(pageButton);
+            }
+
+            // Mostrar o ocultar el mensaje de "No se encontraron juegos"
+            document.getElementById('no-results').style.display = filteredGames.length === 0 ? 'block' : 'none';
+        }
+
+        // Función de búsqueda
+        function searchGames(event) {
+            event.preventDefault();
+            const query = document.getElementById('search-input').value.toLowerCase();
+
+            // Filtrar los juegos según la búsqueda
+            filteredGames = games.filter(game => 
+                game.title.toLowerCase().includes(query) || 
+                game.description.toLowerCase().includes(query)
+            );
+
+            // Cargar los juegos filtrados en la primera página
+            currentPage = 1;
+            loadGames(currentPage);
+        }
+
+        // Agregar el evento de búsqueda
+        document.getElementById('search-form').addEventListener('submit', searchGames);
+
+        // Cargar los juegos de la primera página al iniciar
+        loadGames(currentPage);
+
+        // Mostrar el botón de "Ir al inicio" cuando se desplace hacia abajo
+        window.onscroll = function () {
+            const scrollButton = document.querySelector('.scroll-to-top');
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                scrollButton.style.display = "block";
+            } else {
+                scrollButton.style.display = "none";
+            }
+        };
+
+        // Acción al hacer clic en el botón de "Ir al inicio"
+        document.querySelector('.scroll-to-top').addEventListener('click', function () {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Función para alternar la descripción
+        function toggleDescription(button) {
+            const cardBody = button.closest('.card-body');
+            const shortDesc = cardBody.querySelector('.short-description');
+            const fullDesc = cardBody.querySelector('.full-description');
+            
+            if (fullDesc.style.display === 'none') {
+                fullDesc.style.display = 'block';
+                shortDesc.style.display = 'none';
+                button.textContent = 'Ver menos';
+            } else {
+                fullDesc.style.display = 'none';
+                shortDesc.style.display = 'block';
+                button.textContent = 'Ver más';
+            }
+        }
+    </script>
+</body>
+</html>
